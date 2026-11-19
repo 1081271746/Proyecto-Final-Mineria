@@ -30,7 +30,23 @@ except FileNotFoundError:
 
 # Sidebar / Filtros
 st.sidebar.header("Filtros de Campaña")
-selected_campaign = st.sidebar.selectbox("Seleccionar Identificador de Campaña", options=['Todas'] + list(df['campaign_id'].unique()))
+
+# Limpiar y filtrar identificadores de campaña
+campaign_ids = pd.to_numeric(
+    df['campaign_id'], errors='coerce'
+).dropna()
+
+campaign_ids = sorted(campaign_ids.unique())
+
+selected_campaign = st.sidebar.selectbox(
+    "Seleccionar Identificador de Campaña",
+    options=['Todas'] + campaign_ids
+)
+
+filtered_df = (
+    df if selected_campaign == 'Todas'
+    else df[pd.to_numeric(df['campaign_id'], errors='coerce') == selected_campaign]
+)
 
 filtered_df = df if selected_campaign == 'Todas' else df[df['campaign_id'] == selected_campaign]
 
