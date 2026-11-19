@@ -7,7 +7,7 @@ import joblib
 st.set_page_config(page_title="Optimización de Campañas", layout="wide")
 
 # Título principal
-st.title("🎯 Optimización de Campañas Publicitarias - Facebook Ads")
+st.title(" Optimización de Campañas Publicitarias - Facebook Ads")
 st.markdown("Sistema analítico para la optimización de inversión y estimación de retorno de inversión publicitaria (ROI).")
 
 # Cargar datos de forma relativa (Compatible con Local y Colab)
